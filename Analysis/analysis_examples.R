@@ -2,7 +2,7 @@ library(MendelianRandomization)
 
 #####Univariable
 ##example, height on CAD
-data <- read.table("Documents/VoightLab/send_to_Eric/STable6.txt", head=T) #Note, should be using the full set of height instruments (STable 2, these are only the SNPs used for MVMR i.e., in all of the GWAS used for MVMR)
+data <- read.table("STable6.txt", head=T) #Note, should be using the full set of height instruments (STable 2, these are only the SNPs used for MVMR i.e., in all of the GWAS used for MVMR)
 
 #for the outcome (e.g., CAD) effects, the alleles need to be oriented to those of height (which are oriented to the height-increasing allele)
 #can use this script to flip the alleles:
