@@ -43,3 +43,25 @@ formatted <- format_mvmr(data[,c(21,5,7)], data$CAD_BETA, data[,c(22,6,8)], data
 sink("Documents/VoightLab/send_to_Eric/MVMR_example.txt")
 mvmr(formatted)
 sink()
+
+
+#####Direct and indirect effects
+#direct and indirect effects
+
+#height --> FEV1, Shrine
+library(MendelianRandomization)
+snps <- read.table("STable7.txt", head=T, sep="\t")
+
+mrobj <- mr_input(bx=snps$Height_BETA, bxse=snps$Height_SE, by=snps$FEV1_BETA, byse=snps$FEV1_SE)
+mr_ivw(mrobj)
+
+#direct height estimate
+-0.11984363 - (-0.078737196*-0.027)
+#-0.1219695
+
+mrobj <- mr_input(bx=snps$Height_BETA, bxse=snps$Height_SE, by=snps$FVC_BETA, byse=snps$FVC_SE)
+mr_ivw(mrobj)
+
+#direct height estimate
+-0.11984363 - (-0.111505213*-0.01)
+#-0.1209587
