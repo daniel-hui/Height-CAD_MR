@@ -2,7 +2,7 @@ library(MendelianRandomization)
 
 #####Univariable
 ##example, height on CAD
-data <- read.table("STable6.txt", head=T) #Note, should be using the full set of height instruments (STable 2, these are only the SNPs used for MVMR i.e., in all of the GWAS used for MVMR)
+data <- read.table("STable6.txt", head=T) #Supplemental Table 6 from manuscript. Note, should be using the full set of height instruments (STable 2, these are only the SNPs used for MVMR i.e., in all of the GWAS used for MVMR)
 
 #for the outcome (e.g., CAD) effects, the alleles need to be oriented to those of height (which are oriented to the height-increasing allele)
 #can use this script to flip the alleles:
@@ -12,7 +12,7 @@ data <- read.table("STable6.txt", head=T) #Note, should be using the full set of
 #e.g.,:
 #python match_height_alleles_general_onlySomeColumns.py example_files/STable2.txt example_files/chrPos_toKeep.txt example_files/LDL_EUR_formatted_head100000.txt 1 2 3 4 5 6 7 8 | sort -gk1,1 -gk2,2 > example_files/LDL_EUR_formatted_head100000_heightFlipped.txt
 #example_files/LDL_EUR_formatted.txt are European ancestry LDL sumstats from Klarin et al 2018
-  #i just took the first 100K lines to reduce file size
+  #I just took the first 100K lines to reduce file size
 #chrPos_toKeep.txt contains 1906 chromosome:positions that were available in all the GWAS for all exposures used in MVMR
   #for univariable, would probably be more than that
   #should use all chromosome:positions in both height and the outcome GWAS (e.g., stroke or PAD) only
