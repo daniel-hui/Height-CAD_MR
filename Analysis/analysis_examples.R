@@ -21,7 +21,7 @@ mrobj <- mr_input(bx=data$Height_BETA, bxse=data$Height_SE, by=data$CAD_BETA, by
 all <- mr_allmethods(mrobj)
 mr_plot(all) #example plot from MendelianRandomization
 all #statistics
-dput(all, file = "Documents/VoightLab/send_to_Eric/height_CAD.txt")
+dput(all, file = "height_CAD.txt")
 
 #format output
 #bash:
