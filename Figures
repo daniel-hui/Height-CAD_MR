@@ -1,0 +1,157 @@
+
+###s figure 1, plots
+library(forestplot)
+
+#a
+univ_plot <- data.frame("Estimate" = c(0.122826548, 0.113470452, 0.123105108), 
+                        "SE" = c(0.018522332, 0.021303984, 0.041004425))
+univ_plot$mean <- exp(univ_plot$Estimate)
+univ_plot$upper <- exp(ci_normal("u", univ_plot$Estimate, univ_plot$SE, .05))
+univ_plot$lower <- exp(ci_normal("l", univ_plot$Estimate, univ_plot$SE, .05))
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/SFig_a.png", height=300, width=500, pointsize=20)
+forestplot(rep(NA, 3), univ_plot$mean, univ_plot$lower, univ_plot$upper,
+           size=.15, zero=1, txt_gp = fpTxtGp(label=gpar(cex=2)), xticks=(c(.85, 1.0, 1.15, 1.30)), xlab="Odds ratio")
+dev.off()
+
+#b
+univ_plot <- data.frame("Estimate" = c(0.088879364, 0.036817191, 0.079084406), 
+                        "SE" = c(0.027871284, 0.03030841, 0.067914256))
+univ_plot$mean <- exp(univ_plot$Estimate)
+univ_plot$upper <- exp(ci_normal("u", univ_plot$Estimate, univ_plot$SE, .05))
+univ_plot$lower <- exp(ci_normal("l", univ_plot$Estimate, univ_plot$SE, .05))
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/SFig_b.png", height=300, width=500, pointsize=20)
+forestplot(rep(NA, 3), univ_plot$mean, univ_plot$lower, univ_plot$upper,
+           size=.15, zero=1, txt_gp = fpTxtGp(label=gpar(cex=2)), xticks=(c(.85, 1.0, 1.15, 1.30)), xlab="Odds ratio")
+dev.off()
+
+
+##figure 2
+data <- read.table("Documents/VoightLab/Revisions_BMCMedicine/Figure2_data.txt", head=T, sep="\t")
+
+data[1,2] <- data[1,2]*-1
+data[2,2] <- data[2,2]*-1
+data[3,2] <- data[3,2]*-1
+data[6,2] <- data[6,2]*-1
+data[7,2] <- data[7,2]*-1
+data[8,2] <- data[8,2]*-1
+data[11,2] <- data[11,2]*-1
+data[13,2] <- data[13,2]*-1
+data[15,2] <- data[15,2]/5
+data[15,3] <- data[15,3]/5
+
+data$OR <- exp(data$Estimate)
+data$upper95CI <- exp(ci_normal("u", data$Estimate, data$SE, .05))
+data$lower95CI <- exp(ci_normal("l", data$Estimate, data$SE, .05))
+
+
+mvmr_plot <-
+  as.data.frame(structure(list(
+    mean  = data$OR, 
+    lower = data$lower95CI,
+    upper = data$upper95CI)))
+mvmr_plot
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/Fig2.png", height=600, width=600, pointsize=30)
+forestplot(rep(NA, 18), mvmr_plot$mean, mvmr_plot$lower, mvmr_plot$upper,
+           size=.20, zero=1, xticks=(c(.9, 1.0, 1.10, 1.20, 1.30, 1.40)), xlab="Odds ratio")
+dev.off()
+
+##figure 3
+#a
+univ_plot <- data.frame("Estimate" = c(-0.078737196, -0.010955407, 0.110471824, -0.111505213, -0.086913196, -0.089712352), 
+                        "SE" = c(0.044990308, 0.040090678, 0.142636575, 0.052592425, 0.046352326, 0.176642033))
+univ_plot$mean <- exp(univ_plot$Estimate)
+univ_plot$upper <- exp(ci_normal("u", univ_plot$Estimate, univ_plot$SE, .05))
+univ_plot$lower <- exp(ci_normal("l", univ_plot$Estimate, univ_plot$SE, .05))
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/Fig3_a.png", height=300, width=400, pointsize=15)
+forestplot(rep(NA, 6), univ_plot$mean, univ_plot$lower, univ_plot$upper,
+           size=.15, zero=1, txt_gp = fpTxtGp(label=gpar(cex=2)), xticks=(c(.5, .75, 1.0, 1.25, 1.50, 1.75)), xlab="Odds ratio")
+dev.off()
+
+#c
+univ_plot <- data.frame("Estimate" = c(0.11816457, 0.07273276, 0.1831416), 
+                        "SE" = c(0.01341763, 0.08454717, 0.08174638))
+univ_plot$mean <- exp(univ_plot$Estimate)
+univ_plot$upper <- exp(ci_normal("u", univ_plot$Estimate, univ_plot$SE, .05))
+univ_plot$lower <- exp(ci_normal("l", univ_plot$Estimate, univ_plot$SE, .05))
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/Fig3_c.png", height=300, width=500, pointsize=20)
+forestplot(rep(NA, 3), univ_plot$mean, univ_plot$lower, univ_plot$upper,
+           size=.20, zero=1, txt_gp = fpTxtGp(label=gpar(cex=2)), xticks=(c(.75, 1.0, 1.25, 1.50)), xlab="Odds ratio")
+dev.off()
+
+#e
+univ_plot <- data.frame("Estimate" = c(0.1200902, 0.289525, 0.2253775), 
+                        "SE" = c(0.01409611, 0.12986084, 0.11582076))
+univ_plot$mean <- exp(univ_plot$Estimate)
+univ_plot$upper <- exp(ci_normal("u", univ_plot$Estimate, univ_plot$SE, .05))
+univ_plot$lower <- exp(ci_normal("l", univ_plot$Estimate, univ_plot$SE, .05))
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/Fig3_e.png", height=300, width=600, pointsize=20)
+forestplot(rep(NA, 3), univ_plot$mean, univ_plot$lower, univ_plot$upper,
+           size=.20, zero=1, txt_gp = fpTxtGp(label=gpar(cex=2)), xticks=(c(.75, 1.0, 1.25, 1.50, 1.75, 2.0)), xlab="Odds ratio")
+dev.off()
+
+
+#b
+data <- read.table("Documents/VoightLab/Revisions_BMCMedicine/Figure3_b_data.txt", head=T, sep="\t")
+
+data[1,2] <- data[1,2]*-1
+data[3,2] <- data[3,2]*-1
+data[4,2] <- data[4,2]*-1
+data[5,2] <- data[5,2]*-1
+data[8,2] <- data[8,2]*-1
+data[10,2] <- data[10,2]*-1
+data[12,2] <- data[12,2]/5
+data[12,3] <- data[12,3]/5
+
+data$OR <- exp(data$Estimate)
+data$upper95CI <- exp(ci_normal("u", data$Estimate, data$SE, .05))
+data$lower95CI <- exp(ci_normal("l", data$Estimate, data$SE, .05))
+
+
+
+mvmr_plot <-
+  as.data.frame(structure(list(
+    mean  = data$OR, 
+    lower = data$lower95CI,
+    upper = data$upper95CI)))
+mvmr_plot
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/Fig3_b.png", height=500, width=500, pointsize=40)
+forestplot(rep(NA, 15), mvmr_plot$mean, mvmr_plot$lower, mvmr_plot$upper,
+           size=.25, zero=1, xticks=(c(.90, 1.0, 1.10, 1.20, 1.3, 1.4, 1.50)), xlab="Odds ratio")
+dev.off()
+
+
+
+#d
+data <- read.table("Documents/VoightLab/Revisions_BMCMedicine/Figure3_d_data.txt", head=T, sep="\t")
+
+data[1,2] <- data[1,2]*-1
+data[3,2] <- data[3,2]*-1
+data[4,2] <- data[4,2]*-1
+data[5,2] <- data[5,2]*-1
+data[8,2] <- data[8,2]*-1
+data[10,2] <- data[10,2]*-1
+data[12,2] <- data[12,2]/5
+data[12,3] <- data[12,3]/5
+
+data$OR <- exp(data$Estimate)
+data$upper95CI <- exp(ci_normal("u", data$Estimate, data$SE, .05))
+data$lower95CI <- exp(ci_normal("l", data$Estimate, data$SE, .05))
+
+mvmr_plot <-
+  as.data.frame(structure(list(
+    mean  = data$OR, 
+    lower = data$lower95CI,
+    upper = data$upper95CI)))
+mvmr_plot
+
+png(filename = "Documents/VoightLab/Revisions_BMCMedicine/Fig3_d.png", height=500, width=500, pointsize=40)
+forestplot(rep(NA, 15), mvmr_plot$mean, mvmr_plot$lower, mvmr_plot$upper,
+           size=.25, zero=1, xticks=(c(.90, 1.0, 1.10, 1.20, 1.3, 1.4, 1.50)), xlab="Odds ratio")
+dev.off()
