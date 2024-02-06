@@ -40,7 +40,7 @@ exp(ci_normal(type = "u", mean = est, se = err, alpha = .025))
 library(MVMR)
 #e.g., all exposures together
 formatted <- format_mvmr(data[,c(21,5,7)], data$CAD_BETA, data[,c(22,6,8)], data$CAD_SE) #e..g, height, alcohol, birth weight
-sink("Documents/VoightLab/send_to_Eric/MVMR_example.txt")
+sink("MVMR_example.txt")
 mvmr(formatted)
 sink()
 
