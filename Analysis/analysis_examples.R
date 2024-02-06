@@ -6,7 +6,7 @@ data <- read.table("STable6.txt", head=T) #Supplemental Table 6 from manuscript.
 
 #for the outcome (e.g., CAD) effects, the alleles need to be oriented to those of height (which are oriented to the height-increasing allele)
 #can use this script to flip the alleles:
-#python match_height_alleles_general.py <height effects e.g., STable2> <chr:pos to keep> <sumstats to flip> <chrom column> <pos column> <effect allele column> <other allele column> <freq column> <beta column> <se column> <p column>
+#python match_height_alleles_general_onlySomeColumns.py <height effects e.g., STable2> <chr:pos to keep> <sumstats to flip> <chrom column> <pos column> <effect allele column> <other allele column> <freq column> <beta column> <se column> <p column>
 #<chr:pos to keep> is a file formatted with one "chromosome\tposition" to keep (i.e., in both sets of sumstats)
 #this script uses this file even for one other set of sumstats since it was used for MVMR to only keep chr:pos in multiple sets of sumstats
 #e.g.,:
